@@ -1,25 +1,45 @@
-'''
-все четные или не нечетные числа из списка и
+# Программа проверяет все четные или не нечетные числа из списка и
+#останавливается когда находит заданное число
 
-программа останавливается когда находит заданное число
 '''
-'''
-программа прверяет, является ли строка палиндромом
-'''
-'''
-import random
-listik = [random.randint(0, 1000) for i in range(100)]
-print('Вывод нечетных чисел')
-for i in listik:
-    if i % 2 == 1:
-        print(i)
-        if i == 195:
-            print(i, 'найдено ключевое число')
-            break
+def chisla():
+    A = [int(i) for i in range(1000)]
+    B = []
+    chetnost = input('Какие числа нужно проверить, четные или нечетные?')
+    key = int(input('Введите ключевое число этой четности'))
+    if chetnost != 'четные' and chetnost != 'нечетные':
+        return 'Неверные данные. Попробуйте еще раз.'
+    elif (chetnost == 'нечетные' and key % 2 == 0) or (chetnost == 'четные' and key % 2 == 1):
+        return 'Четность ключевого числа не совпадает с введенной. Попробуйте еще раз.'
+    elif chetnost == 'четные' and key % 2 == 0:
+        print('Вывод четных чисел')
+        for i in A:
+            if i % 2 == 0:
+                B.append(i)
+                if i == key:
+                    print(*B, 'найдено ключевое число')
+                    break
+    elif chetnost == 'нечетные' and key % 2 == 1:
+        print('Вывод нечетных чисел')
+        for i in A:
+            if i % 2 == 1:
+                B.append(i)
+                if i == key:
+                    print(*B, 'найдено ключевое число')
+                    break
+    return 'Программа завершена'
+
+
+
+print(chisla())
 '''
 
+
+#Программа проверяет, является ли строка палиндромом
+
+'''
 stroka = input()
-def is_palindrom(stroka):
+def palindrom(stroka):
     for i in range(1, len(stroka)):
         if stroka[i - 1] == stroka[-i]:
             continue
@@ -28,5 +48,6 @@ def is_palindrom(stroka):
             break
     else:
         print('является палиндромом')
-    return 'the end'
-print(is_palindrom(stroka))
+    return 'Программа завершена'
+print(palindrom(stroka))
+'''
